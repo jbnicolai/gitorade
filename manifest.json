@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+
+	"name": "Gitorade",
+	"description": "Generate GitHub Issues containing a screenshot.",
+	"version": "0.0.0",
+
+	"browser_action": {
+		"default_title": "Gitorade"
+	},
+
+	"background": {
+		"persistent": false,
+		"scripts": [
+			"javascripts/background.js"
+		]
+	},
+
+	"permissions": [ 
+		"http://*/",
+		"https://*/",
+		"tabs" 
+	]
+}

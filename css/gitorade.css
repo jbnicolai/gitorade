@@ -1,0 +1,16 @@
+#canvas {
+	background-color: transparent;
+	left: 0;
+	position: absolute;
+	top: 0;	
+}
+
+#panel {
+	background-color: #F1F2F3;
+	height: 100%;
+	padding: 10px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 20%;
+}
