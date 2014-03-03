@@ -6,7 +6,14 @@
 	"version": "0.0.0",
 
 	"browser_action": {
+		"default_icon": "images/octocat_16x16_transparent.png",
 		"default_title": "Gitorade"
+	},
+
+	"icons": {
+		"16": "images/octocat_16x16_transparent.png",
+		"48": "images/octocat_48x48_transparent.png",
+		"128": "images/octocat_128x128_transparent.png"
 	},
 
 	"background": {

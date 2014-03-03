@@ -48,6 +48,36 @@ angular.module('Gitorade.services')
             return deferred.promise;
           },
 
+          getOrganizationRepositories: function (token, organization) {
+            var github_endpoint_url = [that.GITHUB_API_HOST, 'orgs', organization, 'repos'].join('/');
+            var deferred = $q.defer();
+
+            $http.get(github_endpoint_url, {
+              params: { access_token: token }
+            }).success(function (response) {
+              deferred.resolve(response);
+            }).error(function (response) {
+              deferred.reject(response);
+            });
+
+            return deferred.promise;
+          },
+
+          getUserOrganizations: function (token) {
+            var github_endpoint_url = [that.GITHUB_API_HOST, 'user', 'orgs'].join('/');
+            var deferred = $q.defer();
+
+            $http.get(github_endpoint_url, {
+              params: { access_token: token }
+            }).success(function (response) {
+              deferred.resolve(response);
+            }).error(function (response) {
+              deferred.reject(response);
+            });
+
+            return deferred.promise;
+          },
+
           getUserRepositories: function (token) {
             var github_endpoint_url = [that.GITHUB_API_HOST, 'user', 'repos'].join('/');
             var deferred = $q.defer();

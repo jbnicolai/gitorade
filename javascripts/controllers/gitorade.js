@@ -1,29 +1,47 @@
 angular.module('Gitorade.controllers')
-  .controller('GitoradeCtrl', function ($rootScope, $scope, $timeout, Github, Imgur, $cacheFactory) {
+  .controller('GitoradeCtrl', function ($q, $rootScope, $scope, $timeout, Github, Imgur) {
     var createIssue = function (token, repository, title, body) {
 
     };
 
-    var getAuthenticatedUser = function () {
+    var getAuthenticatedUser = function (token) {
       $scope.user = Github.getAuthenticatedUser(token);
 
       $scope.user.then(function (data) {
         $scope.user = data;
 
-        getUserRepositories();
+        getUserRepositories(token);
       }, function (data) {
         console.log('Error: getAuthenticatedUser');
       });
     };
 
-    var getUserRepositories = function () {
-      $scope.repos = Github.getUserRepositories(token);
+    var getUserRepositories = function (token) {
+      Github.getUserOrganizations(token)
+        .then(function (organizations) {
+          var userRepositories = [Github.getUserRepositories(token)];
+          var organizationRepositories = organizations.map(function (organization) {
+            console.log(organization.login);
+            return Github.getOrganizationRepositories(token, organization.login);
+          });
 
-      $scope.repos.then(function (data) {
-        $scope.repos = data;
-      }, function (data) {
-        console.log('Error: getUserRepositories');
-      });
+          $q.all(userRepositories.concat(organizationRepositories))
+            .then(function (responses) {
+              $scope.repos = responses.reduce(function (a, b) {
+                return a.concat(b);
+              });
+            }, function (responses) {
+              var keys = ['getUserRepositories', 'getOrganizationRepositories'];
+
+              for (var i = 0; i < response.length; ++i) {
+                if (repsonse[i].hasOwnProperty('err') && responses[i].err) {
+                  console.log('Error: ' + keys[i]);
+                }
+              }
+            });
+        }, function (data) {
+          console.log('Error: getUserOrganizations');
+        });
     };
 
     var uploadImage = function (base64) {
