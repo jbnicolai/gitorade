@@ -1,6 +1,7 @@
 var id = 100;
 
 chrome.browserAction.onClicked.addListener(function (tab) {
+  var hostURL = tab.url;
   chrome.tabs.captureVisibleTab(function (screenshotUrl) {
     console.log(screenshotUrl);
     var currentId = id++;
@@ -18,6 +19,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
           var view = views[i];
           if (view.location.href == viewTabUrl) {
             view.Gitorade.setScreenShot(screenshotUrl, currentId);
+            view.Gitorade.setHostURL(hostURL, currentId);
             break;
           }
         }

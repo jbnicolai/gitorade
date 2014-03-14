@@ -20,7 +20,7 @@ angular.module('Gitorade.services')
             var deferred = $q.defer();
 
             $http.post(github_endpoint_url, {
-              title: title, body: body,
+              title: title, body: body, labels: ['gitorade']
             }, {
               params: { access_token: token }
             }).success(function (response) {

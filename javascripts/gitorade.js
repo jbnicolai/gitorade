@@ -24,5 +24,9 @@ var Gitorade = {
     if (this.formatImg) {
       this.formatImg.setBackground(img);
      }
+  },
+
+  setHostURL: function (url, id) {
+    window.sessionStorage.setItem('gh-issue-host-url', url);
   }
 }

@@ -3,7 +3,7 @@
 
 	"name": "Gitorade",
 	"description": "Generate GitHub Issues containing a screenshot.",
-	"version": "0.0.0",
+	"version": "1.0.1",
 
 	"browser_action": {
 		"default_icon": "images/octocat_16x16_transparent.png",
