@@ -11,9 +11,10 @@ window.addEventListener('load', function () {
 var Gitorade = {
   load: function (params) {
     var action = document.querySelector('#github_issue_create'),
-        canvas = document.querySelector('#canvas');
+        canvas = document.querySelector('#canvas'),
+        $panel = $('#panel');
 
-    canvas.setAttribute('height', (window.innerHeight * 0.8) + 'px');
+    canvas.setAttribute('height', (window.innerHeight - $panel.height()) + 'px');
     canvas.setAttribute('width', window.innerWidth + 'px');
 
     this.formatImg = new GithubCanvas(canvas);
