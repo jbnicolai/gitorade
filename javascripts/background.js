@@ -3,7 +3,6 @@ var id = 100;
 chrome.browserAction.onClicked.addListener(function (tab) {
   var hostURL = tab.url;
   chrome.tabs.captureVisibleTab(function (screenshotUrl) {
-    console.log(screenshotUrl);
     var currentId = id++;
     var viewTabUrl = chrome.extension.getURL('gitorade.html?id=' + currentId);
     chrome.tabs.create({ url: viewTabUrl }, function (tab) { 

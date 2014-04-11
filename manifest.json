@@ -24,8 +24,7 @@
 	},
 
 	"permissions": [ 
-		"http://*/",
-		"https://*/",
+    "<all_urls>",
 		"tabs" 
 	]
 }

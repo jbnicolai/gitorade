@@ -13,8 +13,8 @@ var Gitorade = {
     var action = document.querySelector('#github_issue_create'),
         canvas = document.querySelector('#canvas');
 
-    canvas.setAttribute('height', window.innerHeight + 'px');
-    canvas.setAttribute('width', (window.innerWidth * 0.8) + 'px');
+    canvas.setAttribute('height', (window.innerHeight * 0.8) + 'px');
+    canvas.setAttribute('width', window.innerWidth + 'px');
 
     this.formatImg = new GithubCanvas(canvas);
   },

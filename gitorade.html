@@ -10,38 +10,49 @@
 	<div id="gitorade-container" class="container" ng-controller="GitoradeCtrl">
 		<canvas id="canvas"></canvas>
 
-		<div id="panel">
-			<h1>
-				<span class="name">Gitorade</span>
-			</h1>
+    <form role="form">
+      <div id="panel">
+        <div class="row" style="height: 100%;">
+          <div class="col-lg-2 title">
+           <h1 class="name">Gitorade</h1>
 
-			<a href="#" id="clean">Clean</a>
-			<a href="#" id="set-token" data-toggle="modal" data-target="#setTokenModal">Set Token</a>
+            <div>
+              <a href="#" id="clean-screenshot" class="btn btn-xs btn-default">Clean Screenshot</a>
+              <a href="#" id="set-token" class="btn btn-xs btn-default" data-toggle="modal" data-target="#setTokenModal">Set Token</a>
+            </div>
 
-			<form role="form">
-				<div class="form-group">
-					<label for="github_issue_repo">Repository</label>
-					<select id="github_issue_repo" class="form-control">
-						<option ng-repeat="repo in repos" ng-bind="repo.full_name"></option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="github_issue_submitter">Submitter</label>
-					<input id="github_issue_submitter" type="text" class="form-control" placeholder="Submitter" required>
-				</div>
-				<div class="form-group">
-					<label for="github_issue_title">Title</label>
-					<input id="github_issue_title" type="text" class="form-control" placeholder="Title" required>
-				</div>
+            <div style="margin-top: 15px;">
+              <select id="github_issue_repo" class="form-control">
+                <option selected disabled>Select Repository</option>
+                <option ng-repeat="repo in repos" ng-bind="repo.full_name"></option>
+              </select>
+            </div>
+          </div>
 
-				<div class="form-group">
-					<label for="github_issue_body">Body</label>
-					<textarea id="github_issue_body" class="form-control" required></textarea>
-				</div>
+          <div class="col-lg-8 detail">
+            <p class="lead">
+              Hi, I'm <input id="github_issue_submitter" type="text" placeholder="James" required>.
+            </p>
 
-				<button id="github_issue_create" type="submit" class="btn btn-default">Create Issue</button>
-			</form>
-		</div>
+            <p class="lead">
+              When I use your site, what I expect to happen is
+              <input id="github_issue_expected" type="text" placeholder="I see a bunch of kittens" required>,
+              but what actually happens is that
+              <input id="github_issue_actual" type="text" placeholder="I don't see any kittens" required>.
+            </p>
+
+            <p class="lead">
+              Notes:
+              <input id="github_issue_extra" type="text" placeholder="I like kittens" required>
+            </p>
+          </div>
+
+          <div class="col-lg-2 create">
+            <button id="github_issue_create" type="submit" class="btn btn-lg btn-default">Create Issue</button>
+          </div>
+        </div>
+      </div>
+    </form>
 
 		<div class="modal fade" id="setTokenModal" role="dialog" aria-hidden="true">
 			<div class="modal-dialog">
@@ -55,7 +66,7 @@
 						<div class="modal-body">
 							<div class="form-group">
 								<label for="github_access_token">Access Token</label>
-								<input id="github_access_token" type="text" class="form-control" required>
+								<input id="github_access_token" type="text" class="form-control" ng-model="accessToken" required>
 							</div>
 						</div>
 

@@ -6,14 +6,39 @@
 }
 
 #panel {
-	background-color: #F1F2F3;
-	height: 100%;
-	padding: 10px;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 20%;
+  background-color: #F1F2F3;
+  height: 20%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 20px;
+  border-top: 1px solid #000000;
 }
+
+#panel input[type=text] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  text-align: center;
+}
+
+#panel input[type=text]:focus {
+  outline: none;
+}
+
+#panel .title { text-align: center; }
+
+#panel .detail { }
+
+#panel .create {
+  height: 100%; 
+}
+
+#github_issue_create { height: 100%; width: 100%; }
+#github_issue_repo option { text-align: center; }
+
+#clean-screenshot, #set-token { }
 
 #spin-overlay {
 	position: absolute;
