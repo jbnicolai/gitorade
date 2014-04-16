@@ -6,20 +6,20 @@
 	"version": "1.1.1",
 
 	"browser_action": {
-		"default_icon": "images/octocat_16x16_transparent.png",
+		"default_icon": "assets/images/octocat_16x16_transparent.png",
 		"default_title": "Gitorade"
 	},
 
 	"icons": {
-		"16": "images/octocat_16x16_transparent.png",
-		"48": "images/octocat_48x48_transparent.png",
-		"128": "images/octocat_128x128_transparent.png"
+		"16": "assets/images/octocat_16x16_transparent.png",
+		"48": "assets/images/octocat_48x48_transparent.png",
+		"128": "assets/images/octocat_128x128_transparent.png"
 	},
 
 	"background": {
 		"persistent": false,
 		"scripts": [
-			"javascripts/background.js"
+			"background.js"
 		]
 	},
 

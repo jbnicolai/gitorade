@@ -1,0 +1,27 @@
+{
+  "name": "gitorade",
+  "version": "1.1.1",
+  "homepage": "https://github.com/brwr/gitorade",
+  "authors": [
+    "James Brewer <james+github@brwr.org>"
+  ],
+  "description": "Let your non-technical team easily post bugs and issues to Github.",
+  "keywords": [
+    "github"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "jquery": "~2.1.0",
+    "angular": "~1.2.16",
+    "spin": "~1.1.2",
+    "angular-route": "~1.2.16"
+  }
+}

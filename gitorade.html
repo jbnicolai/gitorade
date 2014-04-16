@@ -1,123 +1,38 @@
 <!DOCTYPE html>
 <html ng-app="Gitorade" ng-csp>
 <head>
-	<title>Gitorade</title>
-
-	<link rel="stylesheet" type="text/css" href="./css/vendor/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/gitorade.css">	
+  <title>Gitorade</title>
+  
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/gitorade.css">
 </head>
 <body>
-	<div id="gitorade-container" class="container" ng-controller="GitoradeCtrl">
-		<canvas id="canvas"></canvas>
+  <div id="gitorade-container" class="container" ng-controller="GitoradeCtrl">
+    <canvas id="canvas"></canvas>
 
-    <form role="form">
-      <div id="panel">
-        <div class="row" style="height: 100%;">
-          <div class="col-lg-2 title">
-           <h1 class="name">Gitorade</h1>
+    <ng-include src="'app/templates/form.html'"></ng-include>
 
-            <div>
-              <a href="#" id="clean-screenshot" class="btn btn-xs btn-default">Clean Screenshot</a>
-              <a href="#" id="set-token" class="btn btn-xs btn-default" data-toggle="modal" data-target="#setTokenModal">Set Token</a>
-            </div>
-
-            <div style="margin-top: 15px;">
-              <select id="github_issue_repo" class="form-control">
-                <option selected disabled>Select Repository</option>
-                <option ng-repeat="repo in repos" ng-bind="repo.full_name"></option>
-              </select>
-            </div>
-          </div>
-
-          <div class="col-lg-8 detail">
-            <p class="lead">
-              Hi, I'm <input id="github_issue_submitter" type="text" placeholder="James" required>.
-            </p>
-
-            <p class="lead">
-              When I use your site, what I expect to happen is
-              <input id="github_issue_expected" type="text" placeholder="I see a bunch of kittens" required>,
-              but what actually happens is that
-              <input id="github_issue_actual" type="text" placeholder="I don't see any kittens" required>.
-            </p>
-
-            <p class="lead">
-              Notes:
-              <input id="github_issue_extra" type="text" placeholder="I like kittens" required>
-            </p>
-          </div>
-
-          <div class="col-lg-2 create">
-            <button id="github_issue_create" type="submit" class="btn btn-lg btn-default">Create Issue</button>
-          </div>
-        </div>
-      </div>
-    </form>
-
-		<div class="modal fade" id="setTokenModal" role="dialog" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Enter your access token</h4>
-					</div>
-
-					<form role="form">
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="github_access_token">Access Token</label>
-								<input id="github_access_token" type="text" class="form-control" ng-model="accessToken" required>
-							</div>
-						</div>
-
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary save-token">Save Token</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<div class="modal fade" id="submitIssueSuccessModal" role="dialog" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Success!</h4>
-					</div>
-
-					<div class="modal-body">
-						<p class="lead">
-							Your issue has been created and will be responded to soon. You can check <a ng-href="{{ issueURL }}">here</a> for updates.
-						</p>
-					</div>
-
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
+    <ng-include src="'app/templates/set-token-modal.html'"></ng-include>
+    <ng-include src="'app/templates/issue-created-modal.html'"></ng-include>
 	</div>
 
-	<div id="spin-overlay" style="display: none;">
-	</div>
+	<div id="spin-overlay" style="display: none;"></div>
 
-	<script type="text/javascript" src="./javascripts/vendor/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="./javascripts/vendor/bootstrap.min.js"></script>
-	<script type="text/javascript" src="./javascripts/vendor/angular.1.2.12.js"></script>
-	<script type="text/javascript" src="./javascripts/vendor/angular-route.1.2.12.min.js"></script>
-	<script type="text/javascript" src="./javascripts/vendor/spin.js"></script>
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+	<script type="text/javascript" src="bower_components/spin/javascripts/jquery.spin.js"></script>
 
-	<script type="text/javascript" src="./javascripts/canvas.js"></script>
-	<script type="text/javascript" src="./javascripts/gitorade.js"></script>
+	<script type="text/javascript" src="assets/javascripts/canvas.js"></script>
+	<script type="text/javascript" src="assets/javascripts/gitorade.js"></script>
 
-	<script type="text/javascript" src="./javascripts/app.js"></script>
-	<script type="text/javascript" src="./javascripts/config.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+	<script type="text/javascript" src="app/config.js"></script>
 
-	<script type="text/javascript" src="./javascripts/services/imgur.js"></script>
-	<script type="text/javascript" src="./javascripts/services/github.js"></script>
-	<script type="text/javascript" src="./javascripts/controllers/gitorade.js"></script>
+	<script type="text/javascript" src="app/services/imgur.js"></script>
+	<script type="text/javascript" src="app/services/github.js"></script>
+	<script type="text/javascript" src="app/controllers/gitorade.js"></script>
 </body>
 </html>
