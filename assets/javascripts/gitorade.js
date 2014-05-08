@@ -14,8 +14,8 @@ var Gitorade = {
         canvas = document.querySelector('#canvas'),
         $panel = $('#panel');
 
-    canvas.setAttribute('height', (window.innerHeight - $panel.height()) + 'px');
-    canvas.setAttribute('width', window.innerWidth + 'px');
+    canvas.setAttribute('height', window.innerHeight + 'px');
+    canvas.setAttribute('width', (window.innerWidth * 0.8) + 'px');
 
     this.formatImg = new GithubCanvas(canvas);
   },

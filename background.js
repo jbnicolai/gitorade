@@ -1,5 +1,18 @@
 var id = 100;
 
+/*chrome.app.runtime.onLaunched.addListener(function(launchData) {
+  try {
+    chrome.identity.launchWebAuthFlow({
+      url: 'http://github.com/login/oauth/authorize?client_id=cc970f3f3857ed84831e&scope=repo,gist&state=gitorade',
+      interactive: true
+    }, function (redirect_url) {
+      alert(redirect_url);
+    });
+  } catch (e) {
+    console.log(e);
+  }
+});*/
+
 chrome.browserAction.onClicked.addListener(function (tab) {
   var hostURL = tab.url;
   chrome.tabs.captureVisibleTab(function (screenshotUrl) {

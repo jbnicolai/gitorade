@@ -1,0 +1,27 @@
+{
+  "name": "gitorade",
+  "version": "0.1.0",
+  "description": "Gitorade ===",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "^0.4.4",
+    "grunt-string-replace": "^0.2.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brwr/gitorade.git"
+  },
+  "keywords": [
+    "github"
+  ],
+  "author": "James Brewer <james@realscout.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brwr/gitorade/issues"
+  },
+  "homepage": "https://github.com/brwr/gitorade"
+}
