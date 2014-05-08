@@ -77,14 +77,17 @@ angular.module('Gitorade.controllers')
     });
 
     $scope.submitIssue = function () {
-      $scope.viewLoading = true;
-
       var repository = $('#issue-repository option:selected').text(),
           submitter = document.querySelector('#issue-submitter').value,
           description = document.querySelector('#issue-description').value,
           content = document.querySelector('#issue-content').value,
           url = window.sessionStorage.getItem('gh-issue-host-url'),
           date = new Date();
+
+      if (repository === 'Select Repository') { 
+        $('.alert-repository').css('display', 'block');
+        return false; 
+      }
 
       var markdown = '' +
         '**Submitter**: ' + submitter + '\n\n' +
@@ -94,6 +97,8 @@ angular.module('Gitorade.controllers')
         '**Screenshot:** ![Gitorade]([IMAGE_URL])';
 
       window.sessionStorage.removeItem('gh-issue-host-url');
+
+      $scope.viewLoading = true;
 
       createIssue(repository, description, markdown).then(function (response) {
         $scope.viewLoading = false;
