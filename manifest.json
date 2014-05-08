@@ -2,8 +2,8 @@
 	"manifest_version": 2,
 
 	"name": "Gitorade",
-	"description": "Generate GitHub Issues containing a screenshot.",
-	"version": "1.1.1",
+	"description": "Create Github Issues with a screenshot in just a few clicks.",
+	"version": "1.2.0",
 
 	"browser_action": {
 		"default_icon": "assets/images/octocat_16x16_transparent.png",
