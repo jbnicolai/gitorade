@@ -11,12 +11,12 @@ module.exports = function (grunt) {
         options: {
           replacements: [
             {
-              pattern: /setClientId\('.*'\)/,
+              pattern: /setClientId\('.*'\)/g,
               replacement: "setClientId('CLIENT_ID')"
             },
             {
-              pattern: /setClientSecret\('.*'\);/g,
-              replacement: "setClientSecret('CLIENT_SECRET');"
+              pattern: /setClientSecret\('.*'\)/g,
+              replacement: "setClientSecret('CLIENT_SECRET')"
             }
           ]
         }
@@ -30,12 +30,12 @@ module.exports = function (grunt) {
         options: {
           replacements: [
             {
-              pattern: /setClientId\('.*'\)/,
-              replacement: "setClientId('<%= grunt.file.read('.github_client_id') %>');"
+              pattern: /setClientId\('.*'\)/g,
+              replacement: "setClientId('<%= grunt.file.read('.github_client_id') %>')"
             },
             {
-              pattern: /setClientSecret\('.*'\)/,
-              replacement: "setClientSecret('<%= grunt.file.read('.github_client_secret') %>');"
+              pattern: /setClientSecret\('.*'\)/g,
+              replacement: "setClientSecret('<%= grunt.file.read('.github_client_secret') %>')"
             }
           ]
         }

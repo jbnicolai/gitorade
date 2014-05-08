@@ -42,7 +42,7 @@ angular.module('Github')
       if (state) this.STATE = state;
     };
 
-    this.$get = function ($http, $q, $routeParams) {
+    this.$get = function ($cookies, $http, $q, $routeParams) {
       var self = this;
 
       var service = {
@@ -71,6 +71,7 @@ angular.module('Github')
                 client_secret: self.CLIENT_SECRET, 
                 code: code
               }).success(function (response) {
+                $cookies.gh_access = response.access_token;
                 self.ACCESS_TOKEN = response.access_token;
 
                 service.getAuthenticatedUser().then(function (response) {
@@ -89,7 +90,11 @@ angular.module('Github')
         },
 
         getAccessToken: function () {
-          if (self.ACCESS_TOKEN) return self.ACCESS_TOKEN;
+          var token = self.ACCESS_TOKEN || $cookies.gh_access;
+
+          if (token) {
+            return token;
+          }
         },
 
         getAuthenticatedUser: function () {
@@ -97,7 +102,7 @@ angular.module('Github')
           var deferred = $q.defer();
 
           $http.get(github_endpoint_url, {
-            params: { access_token: self.ACCESS_TOKEN }
+            params: { access_token: self.ACCESS_TOKEN || $cookies.gh_access }
           }).success(function (response) {
             deferred.resolve(response);
           }).error(function (reason) {

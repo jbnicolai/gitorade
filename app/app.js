@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('Gitorade', [
+  'ngCookies',
   'ngRoute',
   'Gitorade.controllers',
   'Gitorade.directives',
@@ -25,6 +26,7 @@ angular.module('Github.repository', []);
 angular.module('Gitorade')
   .run(function ($modal, $rootScope, Github) {
     Github.getAuthenticatedUser().then(function (response) {
+      $rootScope.$broadcast('Github.user.authenticated');
     }, function (reason) {
       var modalInstance = $modal.open({
         templateUrl: 'app/templates/modals/sign-in.html',
