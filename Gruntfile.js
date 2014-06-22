@@ -1,5 +1,4 @@
 module.exports = function (grunt) {
-  grunt.loadNpmTasks('grunt-replace');
 
   grunt.initConfig({
     'string-replace': {
